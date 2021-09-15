@@ -30,49 +30,63 @@ namespace Facultad.Libreria.Entidades
             _Alumnos.Add(Alumno1);
         }
 
-        public void AgregarEmpleado(Empleado Empleado1)
+        private void AgregarEmpleado(Empleado Empleado1)
         {
             _Empleados.Add(Empleado1);
         }
 
         public void EliminarAlumno(int c)
         {
-            _Alumnos.Remove(c);
+            foreach (Alumno alum in _Alumnos)
+            {
+                if (alum.Codigo == c)
+                {
+                    _Alumnos.Remove(alum);
+                }
+            }
         }
 
         public void EliminarEmpleado(int e)
         {
-            _Empleados.Remove(e);
+            foreach (Empleado emp in _Empleados)
+            {
+                if (emp.Legajo == e)
+                {
+                    _Empleados.Remove(emp);
+                }
+            }
+           
         }
 
-        public void ModificarEmpleado(Empleado Empleado1)
+        private void ModificarEmpleado(Empleado Empleado1)
         {
 
         }
         public List<Alumno> TraerAlumnos()
         {
-            return ListaAlumnos;
+            return _Alumnos;
         }
 
-        public Empleado TraerEmpleadoPorLegajo( int e)
+       /* private Empleado TraerEmpleadoPorLegajo( int e)
         {
-
-            foreach( Empleado c in _Empleados)
+            Empleado empleado = new Empleado();
+            foreach( Empleado empl in _Empleados)
             {
-
+                if (empl.Legajo == e)
+                { empleado = empl; }
             }
-            return;
-        }
+            return empleado;
+        }*/
 
-        public List<Empleado> TraerEmpleados()
+        private List<Empleado> TraerEmpleados()
         {
             return _Empleados;
         }
 
-        public List<Empleado> TraerEmpleadosPorNombre(string nombre)
+       /* public List<Empleado> TraerEmpleadosPorNombre(string nombre)
         {
             return _Empleados;
-        }
+        }*/
 
     }
 }

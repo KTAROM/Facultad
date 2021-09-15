@@ -17,11 +17,11 @@ namespace Facultad.Libreria.Entidades
         {
             get { return _apellido; }
         }
-        public int Edad
+        /*public int Edad
         {
         
-            get { return DateTime.Now - _fechaNac; }
-        }
+            get { return int.Parse(DateTime.Today - _fechaNac); }
+        }*/
 
         public string Nombre
         {
@@ -38,8 +38,8 @@ namespace Facultad.Libreria.Entidades
         public string GetNombreCompleto()
         {
 
-            string Credencial = Nombre + " " + Apellido;
-            return Credencial;
+            string NombreCompleto = Nombre + " " + Apellido;
+            return NombreCompleto;
 
         }
         // Constructor

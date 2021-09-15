@@ -15,7 +15,14 @@ namespace Facultad.Libreria.Entidades
         // Propiedades
         public int Antiguedad
         {
-            get { return _fechaingreso; }
+            get {
+                DateTime fechaActual = DateTime.Today;
+                int Antiguedad = (fechaActual.Year - _fechaingreso.Year);
+                if(_fechaNac.Month>fechaActual.Month)
+                {
+                    --Antiguedad;
+                }
+                return Antiguedad; }
         }
 
         public DateTime FechaIngreso
@@ -41,7 +48,12 @@ namespace Facultad.Libreria.Entidades
         public Salario UltimoSalario
         {
             
-            get { return _salarios.Last<Salario>; }
+            get { return _salarios.Last(); }
         }
+
+        // Constructor
+        public Empleado(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo): 
+            base(apellido, fechaNac, nombre)
+        { }
     }
 }

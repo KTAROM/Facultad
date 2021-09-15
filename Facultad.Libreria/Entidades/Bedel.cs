@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facultad.Libreria.Entidades
 {
-   public class Bedel:Empleado
+  class Bedel:Empleado
     {
         private string _apodo;
 
@@ -22,5 +22,8 @@ namespace Facultad.Libreria.Entidades
             string nombreCompleto = "";
             return nombreCompleto;
         }
+        public Bedel(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo, string apodo) :
+            base(apellido, fechaNac, nombre, fechaingreso, legajo)
+        { }
     }
 }

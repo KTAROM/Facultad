@@ -37,7 +37,7 @@ namespace Facultad.Libreria.Entidades
         // Metodos
         public double GetSalarioNeto()
         {
-            double neto = 0;
+            double neto = _bruto - _descuentos;
             return neto;
         }
 

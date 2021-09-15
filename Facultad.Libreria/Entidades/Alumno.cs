@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facultad.Libreria.Entidades
 {
-    public class Alumno: Persona(string apellido, DateTime fechaNac, string nombre)
+    public class Alumno: Persona
     {
         private int _codigo;
 
@@ -17,10 +17,14 @@ namespace Facultad.Libreria.Entidades
         }
         public string Credencial
         {
-            get {  return }
+            get { return Credencial; }
         }
 
         // Metodos
+        public Alumno(string apellido, DateTime fechaNac, string nombre, int codigo): 
+            base(apellido, fechaNac, nombre)
+        {
 
+        }
     }
 }

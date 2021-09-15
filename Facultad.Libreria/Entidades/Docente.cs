@@ -8,5 +8,10 @@ namespace Facultad.Libreria.Entidades
 {
     class Docente: Empleado
     {
+        // Constructor
+        public Docente (string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo) :
+            base(apellido, fechaNac, nombre, fechaingreso, legajo)
+                { }
+
     }
 }
