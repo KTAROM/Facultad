@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facultad.Libreria.Entidades
 {
-    abstract class Empleado:Persona
+    public class Empleado:Persona
     {
         private DateTime _fechaingreso;
         private int _legajo;
@@ -45,12 +45,22 @@ namespace Facultad.Libreria.Entidades
             get { return _salarios; }
         }
 
-        public Salario UltimoSalario
+        public Salario UltimoSalario()
         {
             
-            get { return _salarios.Last(); }
+           return _salarios.Last(); 
         }
-
+        public override string GetCredencial()
+        {
+            string Credencial = Legajo + GetNombreCompleto() + " salario " + UltimoSalario();
+            return Credencial;
+        }
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj)) return true;
+            else return false;
+           
+        }
         // Constructor
         public Empleado(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo): 
             base(apellido, fechaNac, nombre)
