@@ -10,6 +10,7 @@ namespace Facultad.Libreria.Entidades
     {
         private DateTime _fechaingreso;
         private int _legajo;
+        private Salario _ultimoSalario;
         List<Salario> _salarios;
 
         // Propiedades
@@ -48,7 +49,7 @@ namespace Facultad.Libreria.Entidades
         public Salario UltimoSalario()
         {
             
-           return _salarios.Last(); 
+           return _ultimoSalario; 
         }
         public override string GetCredencial()
         {

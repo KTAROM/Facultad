@@ -21,10 +21,16 @@ namespace Facultad.Libreria.Entidades
         }
 
         // Metodos
-        public Alumno(string apellido, DateTime fechaNac, string nombre, int codigo): 
+        public Alumno(string apellido, DateTime fechaNac, string nombre, int codigo) :
             base(apellido, fechaNac, nombre)
         {
 
+        }
+
+       public override string GetCredencial()
+        {
+            string Credencial = "Código " + Codigo + " ) " + Apellido + Nombre;
+                return Credencial;
         }
     }
 }

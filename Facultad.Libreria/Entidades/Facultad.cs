@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facultad.Libreria.Entidades
 {
-    public class Facultad
+    public class Facultad1
     {
         private List<Alumno> _Alumnos;
         private int _cantidadSedes;
@@ -27,6 +27,11 @@ namespace Facultad.Libreria.Entidades
         // Metodos
         public void AgregarAlumno(Alumno Alumno1)
         {
+           _Alumnos.Add(Alumno1);
+        }
+        public void AgregarAlumno(string apellido, DateTime fechaNac, string nombre, int codigo)
+        {
+            Alumno Alumno1 = new Alumno (apellido, fechaNac, nombre, codigo);
             _Alumnos.Add(Alumno1);
         }
 
@@ -34,12 +39,17 @@ namespace Facultad.Libreria.Entidades
         {
             _Empleados.Add(Empleado1);
         }
+        private void AgregarEmpleado(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo)
+        {
+            Empleado Empleado1 = new Empleado(nombre, fechaNac, apellido, fechaingreso, legajo);
+            _Empleados.Add(Empleado1);
+        }
 
         public void EliminarAlumno(int c)
         {
             foreach (Alumno alum in _Alumnos)
             {
-                if (alum.Codigo == c)
+                if (alum.Codigo.Equals(c))
                 {
                     _Alumnos.Remove(alum);
                 }
@@ -50,7 +60,7 @@ namespace Facultad.Libreria.Entidades
         {
             foreach (Empleado emp in _Empleados)
             {
-                if (emp.Legajo == e)
+                if (emp.Legajo.Equals(e))
                 {
                     _Empleados.Remove(emp);
                 }
@@ -87,6 +97,9 @@ namespace Facultad.Libreria.Entidades
         {
             return _Empleados;
         }*/
+       public Facultad1 (string Nombre)
+        {
 
+        }
     }
 }

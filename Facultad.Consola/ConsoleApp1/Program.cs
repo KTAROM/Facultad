@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Facultad.Libreria.Entidades;
 
 namespace ConsoleApp1
 {
@@ -10,15 +11,19 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            
             bool opcion = true;
             string eleccion;
             do
             {
-                Menu();
+                Facultad1 Economicas = new Facultad1("FCE");
+                Console.WriteLine("Bienvenidos a " + Economicas.Nombre + "\n");
+               Menu();
                 eleccion = Console.ReadLine();
-                switch(eleccion)
+                switch(eleccion.ToUpper())
                 {
                     case "1":
+                        AgregarAlumno(Economicas);
                         break;
                     case "2":
                         break;
@@ -42,12 +47,13 @@ namespace ConsoleApp1
                         break;
 
                 }
+                Console.Clear();
             } while (opcion == false);
         }
 
         public static void Menu()
         {
-            Console.WriteLine("Bienvenidos!!!" + "\n" +
+            Console.WriteLine(
               "Ingrese la opción deseada:" + "\n" +
               "1- Agregar un nuevo Alumno" + "\n" +
               "2- Agregar un nuevo Empleado" + "\n" +
@@ -58,6 +64,26 @@ namespace ConsoleApp1
               "7- Buscar un empleado por su legajo" + "\n" +
               "8- Listar todos los empleados"+"\n"+
               "S- Salir");
+        }
+      
+    public static void AgregarAlumno(Facultad1 Facu)
+        {
+            int cod = 0;
+            List<Alumno> ListAlum = Facu.TraerAlumnos();
+            if (ListAlum != null)
+            {
+                cod = ListAlum.Last<Alumno>().Codigo;
+                cod += 1;
+            }
+            Console.WriteLine("Complete los datos del alumno a ingresar"
+                +"\n"+"Nombre:");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Apellido:");
+            string apellido = Console.ReadLine();
+            Console.WriteLine("Fecha de Nacimiento");
+            DateTime fechaNac = DateTime.Parse(Console.ReadLine());
+            Alumno Alumno1 = new Alumno(apellido, fechaNac, nombre, cod);
+            Facu.AgregarAlumno(Alumno1);
         }
     }
 }

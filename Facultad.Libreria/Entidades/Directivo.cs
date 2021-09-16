@@ -8,6 +8,13 @@ namespace Facultad.Libreria.Entidades
 {
     class Directivo: Empleado
     {
+        public override string GetNombreCompleto()
+        {
+
+            string NombreCompleto = "Sr. Director " + Apellido;
+            return NombreCompleto;
+
+        }
         public Directivo (string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo) :
             base(apellido, fechaNac, nombre, fechaingreso, legajo)
         { }

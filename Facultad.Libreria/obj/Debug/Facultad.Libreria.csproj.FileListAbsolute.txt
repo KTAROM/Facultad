@@ -1,0 +1,6 @@
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Libreria\bin\Debug\Facultad.Libreria.dll
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Libreria\bin\Debug\Facultad.Libreria.pdb
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Libreria\obj\Debug\Facultad.Libreria.csproj.AssemblyReference.cache
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Libreria\obj\Debug\Facultad.Libreria.csproj.CoreCompileInputs.cache
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Libreria\obj\Debug\Facultad.Libreria.dll
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Libreria\obj\Debug\Facultad.Libreria.pdb

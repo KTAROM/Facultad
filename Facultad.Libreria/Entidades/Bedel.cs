@@ -17,10 +17,13 @@ namespace Facultad.Libreria.Entidades
         }
 
         //Metodos
-        public string GetNombreCompleto()
+        
+        public override string GetNombreCompleto()
         {
-            string nombreCompleto = "";
-            return nombreCompleto;
+
+            string NombreCompleto = "Bedel " + Apodo;
+            return NombreCompleto;
+
         }
         public Bedel(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo, string apodo) :
             base(apellido, fechaNac, nombre, fechaingreso, legajo)

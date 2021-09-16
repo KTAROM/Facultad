@@ -17,11 +17,20 @@ namespace Facultad.Libreria.Entidades
         {
             get { return _apellido; }
         }
-        /*public int Edad
+        public int Edad
         {
         
-            get { return int.Parse(DateTime.Today - _fechaNac); }
-        }*/
+            get {
+                DateTime fechaActual = DateTime.Today;
+                int edad = (fechaActual.Year - _fechaNac.Year);
+                if(fechaActual.Month<_fechaNac.Month)
+                {
+                    --edad;
+                }
+
+                return edad; }
+            
+        }
 
         public string Nombre
         {
@@ -29,13 +38,13 @@ namespace Facultad.Libreria.Entidades
         }
 
         // Metodos
-        public string GetCredencial()
+        public virtual string GetCredencial()
         {
             string Credencial = Nombre + " " + Apellido;
             return Credencial;
         }
 
-        public string GetNombreCompleto()
+        public virtual string GetNombreCompleto()
         {
 
             string NombreCompleto = Nombre + " " + Apellido;
