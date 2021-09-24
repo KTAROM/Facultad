@@ -28,33 +28,37 @@ namespace Facultad.Libreria.Entidades
 
         public DateTime FechaIngreso
         {
-            get { return _fechaingreso; }
+            get { return this._fechaingreso; }
         }
 
         public DateTime FechaNacimiento
         {
-            get { return _fechaNac; }
+            get { return this._fechaNac; }
         }
 
         public int Legajo
         {
-            get { return _legajo; }
+            get { return this._legajo; }
         }
 
         public List<Salario> Salarios
         {
-            get { return _salarios; }
+            get { return this._salarios; }
         }
 
         public Salario UltimoSalario()
         {
             
-           return _ultimoSalario; 
+           return this._ultimoSalario; 
         }
         public override string GetCredencial()
         {
-            string Credencial = Legajo + GetNombreCompleto() + " salario " + UltimoSalario();
+            string Credencial = this._legajo+" " + GetNombreCompleto() + " salario " + UltimoSalario();
             return Credencial;
+        }
+        public virtual string ToString()
+        {
+            return GetCredencial();
         }
         public override bool Equals(object obj)
         {
@@ -63,8 +67,15 @@ namespace Facultad.Libreria.Entidades
            
         }
         // Constructor
-        public Empleado(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo): 
+        public Empleado(string apellido, DateTime fechaNac, string nombre, DateTime fechaingreso, int legajo): 
             base(apellido, fechaNac, nombre)
+        {
+            this._fechaNac = fechaNac;
+            this._legajo = legajo;
+            this._fechaingreso = fechaingreso;
+            
+        }
+        public Empleado()
         { }
     }
 }

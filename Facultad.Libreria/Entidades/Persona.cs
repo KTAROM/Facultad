@@ -16,6 +16,7 @@ namespace Facultad.Libreria.Entidades
         public string Apellido
         {
             get { return _apellido; }
+            set { _apellido = value; }
         }
         public int Edad
         {
@@ -34,27 +35,32 @@ namespace Facultad.Libreria.Entidades
 
         public string Nombre
         {
-            get { return _nombre; }
+            set { _nombre = value; }
+            get { return _nombre; }            
         }
 
         // Metodos
         public virtual string GetCredencial()
         {
-            string Credencial = Nombre + " " + Apellido;
+            string Credencial = _nombre + " " + _apellido;
             return Credencial;
         }
 
         public virtual string GetNombreCompleto()
         {
 
-            string NombreCompleto = Nombre + " " + Apellido;
+            string NombreCompleto = Nombre + " " + this._apellido;
             return NombreCompleto;
 
         }
         // Constructor
         public Persona(string apellido, DateTime fechaNac, string nombre)
         {
-            
+            this._nombre = nombre;
+            this._apellido = apellido;
+            this._fechaNac = fechaNac;
         }
+        public Persona()
+        { }
     }
 }

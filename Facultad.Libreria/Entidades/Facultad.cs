@@ -32,40 +32,82 @@ namespace Facultad.Libreria.Entidades
         public void AgregarAlumno(string apellido, DateTime fechaNac, string nombre, int codigo)
         {
             Alumno Alumno1 = new Alumno (apellido, fechaNac, nombre, codigo);
-            _Alumnos.Add(Alumno1);
+            AgregarAlumno(Alumno1);
         }
 
-        private void AgregarEmpleado(Empleado Empleado1)
+        public void AgregarEmpleado(Empleado Empleado1)
         {
             _Empleados.Add(Empleado1);
         }
-        private void AgregarEmpleado(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo)
+        public void AgregarEmpleado(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo)
         {
             Empleado Empleado1 = new Empleado(nombre, fechaNac, apellido, fechaingreso, legajo);
-            _Empleados.Add(Empleado1);
+            AgregarEmpleado(Empleado1);
         }
 
         public void EliminarAlumno(int c)
         {
-            foreach (Alumno alum in _Alumnos)
+            
+            bool existe = false;
+            Alumno alumno1 = new Alumno();
+           
+            if (_Alumnos.Count() != 0)
             {
-                if (alum.Codigo.Equals(c))
+                foreach (Alumno alumno in _Alumnos)
                 {
-                    _Alumnos.Remove(alum);
+
+                    if (alumno.Codigo.Equals(c))
+                    {
+                        alumno1 = alumno;
+                        existe = true;
+                       
+                    }
+                   
                 }
+                if (existe)
+                { _Alumnos.Remove(alumno1);
+                    Console.WriteLine("El alumno ha sido eliminado");
+                }
+                else { Console.WriteLine("El código ingresado no existe, intente nuevamente"); }
             }
+
+            else { Console.WriteLine("Aún no se han ingresado empleados");    }
+            Console.ReadKey();
+
+
         }
 
         public void EliminarEmpleado(int e)
         {
-            foreach (Empleado emp in _Empleados)
+            bool existe = false;
+            Empleado Empleado1 = new Empleado();
+
+            if (_Empleados.Count() != 0)
             {
-                if (emp.Legajo.Equals(e))
+                foreach (Empleado empleado in _Empleados)
                 {
-                    _Empleados.Remove(emp);
+
+                    if (empleado.Legajo.Equals(e))
+                    {
+                        Empleado1 = empleado;
+                        existe = true;
+
+                    }
+
                 }
+                if (existe)
+                {
+                    _Empleados.Remove(Empleado1);
+                    Console.WriteLine("El empleado ha sido eliminado");
+                }
+                else { Console.WriteLine("El legajo ingresado no existe, intente nuevamente"); }
             }
-           
+
+            else { Console.WriteLine("Aún no se han ingresado alumnos"); }
+            Console.ReadKey();
+
+
+
         }
 
         private void ModificarEmpleado(Empleado Empleado1)
@@ -74,6 +116,7 @@ namespace Facultad.Libreria.Entidades
         }
         public List<Alumno> TraerAlumnos()
         {
+            
             return _Alumnos;
         }
 
@@ -93,13 +136,22 @@ namespace Facultad.Libreria.Entidades
             return _Empleados;
         }
 
-       /* public List<Empleado> TraerEmpleadosPorNombre(string nombre)
+       public List<Empleado> TraerEmpleadosPorNombre(string nombre)
         {
-            return _Empleados;
-        }*/
-       public Facultad1 (string Nombre)
-        {
+       foreach (Empleado empl in _Empleados)
+       {
+                if(empl.Nombre==nombre)
+                {
 
+                }
+       }
+            return _Empleados;
+        }
+       public Facultad1 (string Nombre)
+        {// creo las listas para evitar null, ahora son vacias
+            this._nombre = Nombre;
+            this._Alumnos = new List<Alumno>();
+            this._Empleados = new List<Empleado>();
         }
     }
 }

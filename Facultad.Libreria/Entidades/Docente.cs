@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facultad.Libreria.Entidades
 {
-    class Docente: Empleado
+    public class Docente: Empleado
     {
         public override string GetNombreCompleto()
         {
@@ -15,8 +15,12 @@ namespace Facultad.Libreria.Entidades
             return NombreCompleto;
 
         }
+        public override string ToString()
+        {
+            return GetNombreCompleto();
+        }
         // Constructor
-        public Docente (string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo) :
+        public Docente (string apellido, DateTime fechaNac, string nombre, DateTime fechaingreso, int legajo) :
             base(apellido, fechaNac, nombre, fechaingreso, legajo)
                 { }
 

@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Facultad.Libreria.Entidades
 {
-  class Bedel:Empleado
+  public class Bedel:Empleado
     {
         private string _apodo;
 
         // Propiedades
         public string Apodo
-        {
-            get { return _apodo; }
+        {           
+            set { this._apodo = value; }
+            get { return this._apodo; }
         }
 
         //Metodos
@@ -21,11 +22,15 @@ namespace Facultad.Libreria.Entidades
         public override string GetNombreCompleto()
         {
 
-            string NombreCompleto = "Bedel " + Apodo;
+            string NombreCompleto = "Bedel " + this._apodo;
             return NombreCompleto;
 
         }
-        public Bedel(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo, string apodo) :
+        public override string ToString()
+        {
+            return GetNombreCompleto();
+        }
+        public Bedel(string apellido, DateTime fechaNac, string nombre, DateTime fechaingreso, int legajo, string apodo) :
             base(apellido, fechaNac, nombre, fechaingreso, legajo)
         { }
     }
