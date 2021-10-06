@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Facultad.ConsolaUtils1;
+using Facultad.ExceptionNoHayAlumno;
 namespace Facultad.Libreria.Entidades
 {
     public class Facultad1
@@ -27,7 +28,7 @@ namespace Facultad.Libreria.Entidades
         // Metodos
         public void AgregarAlumno(Alumno Alumno1)
         {
-           _Alumnos.Add(Alumno1);
+           this._Alumnos.Add(Alumno1);
         }
         public void AgregarAlumno(string apellido, DateTime fechaNac, string nombre, int codigo)
         {
@@ -41,41 +42,40 @@ namespace Facultad.Libreria.Entidades
         }
         public void AgregarEmpleado(string nombre, DateTime fechaNac, string apellido, DateTime fechaingreso, int legajo)
         {
+            Salario ultSalario = new Salario(DateTime.Today);
             Empleado Empleado1 = new Empleado(nombre, fechaNac, apellido, fechaingreso, legajo);
+            Empleado1.UltimoSalario = ultSalario;
             AgregarEmpleado(Empleado1);
         }
 
         public void EliminarAlumno(int c)
         {
-            
-            bool existe = false;
-            Alumno alumno1 = new Alumno();
-           
-            if (_Alumnos.Count() != 0)
+            List<Alumno> ListaAlum = this._Alumnos;
+
+            if (ListaAlum.Count() == 0)
             {
-                foreach (Alumno alumno in _Alumnos)
-                {
-
-                    if (alumno.Codigo.Equals(c))
-                    {
-                        alumno1 = alumno;
-                        existe = true;
-                       
-                    }
-                   
-                }
-                if (existe)
-                { _Alumnos.Remove(alumno1);
-                    Console.WriteLine("El alumno ha sido eliminado");
-                }
-                else { Console.WriteLine("El código ingresado no existe, intente nuevamente"); }
+                throw new ExceptionNoHayAlumnos();
             }
-
-            else { Console.WriteLine("Aún no se han ingresado empleados");    }
-            Console.ReadKey();
-
-
+            else
+            {
+                foreach (Alumno d in ListaAlum)
+                {
+                    if (d.Codigo.Equals(c))
+                    { this._Alumnos.Remove(d); }
+                    else
+                    {
+                        ConsolaUtils.MsjErr("El Alumno ingresado no existe");
+                        Console.ReadKey();
+                    }
+                }
+            }
+                
         }
+
+        // Alumno alumno2 = this._Alumnos.Find(x => x.Equals(new Alumno(c)));
+        /* else { this._Alumnos.Remove(alumno1); }*/
+
+    
 
         public void EliminarEmpleado(int e)
         {
@@ -98,12 +98,15 @@ namespace Facultad.Libreria.Entidades
                 if (existe)
                 {
                     _Empleados.Remove(Empleado1);
-                    Console.WriteLine("El empleado ha sido eliminado");
+                    ConsolaUtils.MsjErr("El empleado ha sido eliminado");
                 }
-                else { Console.WriteLine("El legajo ingresado no existe, intente nuevamente"); }
+                else 
+                { ConsolaUtils.MsjErr();
+                    Console.ReadKey();
+                }
             }
 
-            else { Console.WriteLine("Aún no se han ingresado alumnos"); }
+            else { ConsolaUtils.MsjErr("Aún no se han ingresado empleados"); }
             Console.ReadKey();
 
 
@@ -116,7 +119,10 @@ namespace Facultad.Libreria.Entidades
         }
         public List<Alumno> TraerAlumnos()
         {
-            
+            if (this._Alumnos.Count() == 0)
+            {
+                throw new ExceptionNoHayAlumnos();
+            }
             return _Alumnos;
         }
 
@@ -131,21 +137,28 @@ namespace Facultad.Libreria.Entidades
             return empleado;
         }*/
 
-        private List<Empleado> TraerEmpleados()
+        public List<Empleado> TraerEmpleados()
         {
+            if (this._Empleados.Count() == 0)
+            {
+                throw new ExceptionNoHayAlumnos();
+            }
             return _Empleados;
         }
 
        public List<Empleado> TraerEmpleadosPorNombre(string nombre)
         {
-       foreach (Empleado empl in _Empleados)
+            List<Empleado> EmplPorNom = new List<Empleado>();
+            List<Empleado> TodosEmpl = TraerEmpleados();
+           
+       foreach (Empleado empl in TodosEmpl)
        {
-                if(empl.Nombre==nombre)
+                if(empl.Nombre.Equals(nombre))
                 {
-
+                    EmplPorNom.Add(empl);
                 }
        }
-            return _Empleados;
+            return EmplPorNom;
         }
        public Facultad1 (string Nombre)
         {// creo las listas para evitar null, ahora son vacias

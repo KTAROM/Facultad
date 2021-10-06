@@ -58,6 +58,10 @@
       <Project>{f0418c60-c7f2-49d8-a3e8-9ba97ba482de}</Project>
       <Name>Facultad.ConsolaUtils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Facultad.ExceptionAlumnoNoEsta\Facultad.ExceptionAlumnoNoEsta.csproj">
+      <Project>{19e61fe7-9fa4-432b-91dd-7c15d004baea}</Project>
+      <Name>Facultad.ExceptionAlumnoNoEsta</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

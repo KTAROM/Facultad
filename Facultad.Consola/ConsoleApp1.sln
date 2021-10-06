@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facultad.Negocio", "..\Facu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facultad.ConsolaUtils", "Facultad.ConsolaUtils\Facultad.ConsolaUtils.csproj", "{F0418C60-C7F2-49D8-A3E8-9BA97BA482DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facultad.ExceptionAlumnoNoEsta", "Facultad.ExceptionAlumnoNoEsta\Facultad.ExceptionAlumnoNoEsta.csproj", "{19E61FE7-9FA4-432B-91DD-7C15D004BAEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F0418C60-C7F2-49D8-A3E8-9BA97BA482DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0418C60-C7F2-49D8-A3E8-9BA97BA482DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0418C60-C7F2-49D8-A3E8-9BA97BA482DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E61FE7-9FA4-432B-91DD-7C15D004BAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E61FE7-9FA4-432B-91DD-7C15D004BAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E61FE7-9FA4-432B-91DD-7C15D004BAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E61FE7-9FA4-432B-91DD-7C15D004BAEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

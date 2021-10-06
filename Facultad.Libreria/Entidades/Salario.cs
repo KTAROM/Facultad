@@ -37,7 +37,7 @@ namespace Facultad.Libreria.Entidades
         // Metodos
         public double GetSalarioNeto()
         {
-            double neto = _bruto - _descuentos;
+            double neto = _bruto * _descuentos;
             return neto;
         }
 
@@ -45,6 +45,14 @@ namespace Facultad.Libreria.Entidades
         {
             Console.WriteLine(Bruto);
         }
+        public Salario (DateTime fecha)
+        {
+            this._bruto = 0;
+            this._descuentos=0.20;
+            this._fecha = fecha;
+        }
+            
+
 
     }
 }

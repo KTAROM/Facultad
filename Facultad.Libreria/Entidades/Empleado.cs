@@ -11,7 +11,7 @@ namespace Facultad.Libreria.Entidades
         private DateTime _fechaingreso;
         private int _legajo;
         private Salario _ultimoSalario;
-        List<Salario> _salarios;
+        private List<Salario> _salarios;
 
         // Propiedades
         public int Antiguedad
@@ -46,14 +46,15 @@ namespace Facultad.Libreria.Entidades
             get { return this._salarios; }
         }
 
-        public Salario UltimoSalario()
-        {
-            
-           return this._ultimoSalario; 
+        public Salario UltimoSalario
+        {            
+            get { return this._ultimoSalario; }
+            set { this._ultimoSalario = value; }
         }
         public override string GetCredencial()
         {
-            string Credencial = this._legajo+" " + GetNombreCompleto() + " salario " + UltimoSalario();
+            double salario = this._ultimoSalario.Bruto;
+            string Credencial = this._legajo + " " + GetNombreCompleto() + " salario " + salario;
             return Credencial;
         }
         public virtual string ToString()
@@ -73,6 +74,8 @@ namespace Facultad.Libreria.Entidades
             this._fechaNac = fechaNac;
             this._legajo = legajo;
             this._fechaingreso = fechaingreso;
+            this._salarios = new List<Salario>();
+            
             
         }
         public Empleado()

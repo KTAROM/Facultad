@@ -3,3 +3,4 @@ C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\Facultad.ConsolaUtils\
 C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\Facultad.ConsolaUtils\obj\Debug\Facultad.ConsolaUtils.csproj.CoreCompileInputs.cache
 C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\Facultad.ConsolaUtils\obj\Debug\Facultad.ConsolaUtils.dll
 C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\Facultad.ConsolaUtils\obj\Debug\Facultad.ConsolaUtils.pdb
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\Facultad.ConsolaUtils\obj\Debug\Facultad.ConsolaUtils.csproj.AssemblyReference.cache

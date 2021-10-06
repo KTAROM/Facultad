@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Facultad.Libreria.Entidades
 {
-    public class Persona
+    public abstract class Persona
     {
         private string _apellido;
         public DateTime _fechaNac;
@@ -40,11 +40,11 @@ namespace Facultad.Libreria.Entidades
         }
 
         // Metodos
-        public virtual string GetCredencial()
-        {
+        public abstract string GetCredencial();
+       /* {
             string Credencial = _nombre + " " + _apellido;
             return Credencial;
-        }
+        }*/
 
         public virtual string GetNombreCompleto()
         {

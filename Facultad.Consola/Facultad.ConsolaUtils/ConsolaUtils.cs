@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Facultad.ConsolaUtils
+namespace Facultad.ConsolaUtils1
 {
     public static class ConsolaUtils
     {
@@ -140,5 +140,11 @@ namespace Facultad.ConsolaUtils
             Console.Clear();
             Console.WriteLine("El valor ingresado es incorrecto. Intentelo nuevamente");
         }
+        public static void MsjErr(string mensaje)
+        {
+            Console.Clear();
+            Console.WriteLine(mensaje);
+        }
+
     }
 }

@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Facultad.Libreria.Entidades;
-using Facultad.ConsolaUtils;
+using Facultad.ConsolaUtils1;
+using Facultad.ExceptionNoHayAlumno;
 
 namespace ConsoleApp1
 {
@@ -36,12 +37,16 @@ namespace ConsoleApp1
                         EliminarEmpleado(Economicas);
                         break;
                     case "5":
+                        ModificarEmpleado(Economicas);
                         break;
                     case "6":
+                        ListarAlumnos(Economicas);
                         break;
                     case "7":
+                        BuscarPorLegajo(Economicas);
                         break;
                     case "8":
+                        ListarEmpleados(Economicas);
                         break;
                     case "s":
                         break;
@@ -66,7 +71,7 @@ namespace ConsoleApp1
               "4- Eliminar un empleado existente" + "\n" +
               "5- Modificar un empleado" + "\n" +
               "6- Listar todos los alumnos" + "\n" +
-              "7- Buscar un empleado por su legajo" + "\n" +
+              "7- Buscar un empleado por su nombre" + "\n" +
               "8- Listar todos los empleados" + "\n" +
               "S- Salir");
         }
@@ -159,7 +164,42 @@ namespace ConsoleApp1
         {
             Console.Clear();
             int codigo = ConsolaUtils.PedirInt("Ingrese el código del alumno:");
-            Facu.EliminarAlumno(codigo);
+         try
+            {
+                Facu.EliminarAlumno(codigo);                           
+          }
+            catch(ExceptionNoHayAlumnos ex)
+            {
+                Console.WriteLine("Aún no existen alumnos ingresados");
+                Console.ReadKey();
+                
+            }
+           
+            /*bool existe = false;
+            List<Alumno> ListaAlumnos = Facu.TraerAlumnos();
+           
+            if (ListaAlumnos.Count() != 0)
+            {
+                foreach (Alumno alumno in ListaAlumnos)
+                {
+
+                    if (alumno.Codigo.Equals(codigo))
+                    {
+                        existe = true;
+
+                    }
+
+                }
+                if (existe)
+                {
+                    Facu.EliminarAlumno(codigo);
+                    Console.WriteLine("El alumno ha sido eliminado");
+                }
+                else { ConsolaUtils.MsjErr(); }
+            }
+
+            else { Console.WriteLine("Aún no se han ingresado alumnos"); }
+            Console.ReadKey();*/
         }
         public static void EliminarEmpleado(Facultad1 Facu)
         {
@@ -169,28 +209,97 @@ namespace ConsoleApp1
 
 
         }
-        public static void ListarAlumno(Facultad1 Facu)
+        public static void ListarAlumnos(Facultad1 Facu)
         {
-            if (Facu.TraerAlumnos() == null)
-            { }
-            if (Facu.TraerAlumnos().Any<Alumno>())
-            { }
+            Console.Clear();
+            List<Alumno> ListaAlum = new List<Alumno>();
+            try
+            {
+                ListaAlum=Facu.TraerAlumnos();
+                Console.WriteLine("LISTA DE ALUMNOS!!!");
+            }
+            catch(ExceptionNoHayAlumnos ex)
+            {
+                Console.WriteLine("Aún no existen alumnos ingresados");
+                Console.ReadKey();
+            }
+            if (ListaAlum.Any())
+            {
+                foreach (Alumno alum in ListaAlum)
+                {
+                    Console.WriteLine(alum.GetCredencial());
+
+                }
+                Console.ReadKey();
+            }
+        }
+        public static void ListarEmpleados(Facultad1 Facu)
+        {
+            Console.Clear();
+            List<Empleado> ListaEmp = new List<Empleado>();
+            try
+            {                
+                ListaEmp = Facu.TraerEmpleados();
+                Console.WriteLine("LISTA DE EMPLEADOS!!!");
+            }
+            catch (ExceptionNoHayAlumnos ex)
+            {
+                Console.WriteLine("Aún no existen empleados ingresados");
+                Console.ReadKey();
+            }
+            if (ListaEmp.Any())
+            {
+                foreach (Empleado empl in ListaEmp)
+                {
+                    Console.WriteLine(empl.GetCredencial());
+
+                }
+                Console.ReadKey();
+            }
+        }
+        public static void ModificarEmpleado(Facultad1 Facu)
+        {
+            Console.WriteLine(
+             "Ingrese el dato que desea modificar:" + "\n" +
+             "1- Nombre" + "\n" +
+             "2- Apellido" + "\n" +
+             "3- Fecha de Nacimiento" + "\n" +
+             "4- Legajo" + "\n" +
+             "5- Salario" + "\n" +
+             "6- Listar todos los alumnos" + "\n" +
+             "7- Buscar un empleado por su nombre" + "\n" +
+             "8- Listar todos los empleados" + "\n" +
+             "S- Salir");
 
         }
-        /* public override bool Equals(Object o)
-         {
-             if (o == null)
-             {
-                 return false;
-             }
-
-             if (this._codigo == ((Alumno)o).Codigo)
-             {
-                 return true;
-             }
-
-             return false;
-         }*/
+        public static void BuscarPorLegajo(Facultad1 Facu)
+        {
+            Console.Clear();
+            try
+            {
+                string nombre = ConsolaUtils.PedirNombre("Ingrese el nombre del empleado que desea buscar:");
+                List<Empleado> EmplNombre = Facu.TraerEmpleadosPorNombre(nombre);
+                if (EmplNombre.Any())
+                {
+                    foreach (Empleado empl in EmplNombre)
+                    {
+                        Console.WriteLine(empl.GetCredencial());
+                    }
+                    Console.ReadKey();
+                }
+                else
+                {
+                    Console.WriteLine("No hay empleados registrados con ese nombre");
+                    Console.ReadKey();
+                }
+            }
+            catch(ExceptionNoHayAlumnos ex)
+            {
+                Console.WriteLine("No hay empleados ingresados");
+                Console.ReadKey();
+            }
+        }
+        
         public static void ListarTipos()
         {
             Console.WriteLine("TIPOS DE EMPLEADOS" + "\n");

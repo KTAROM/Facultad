@@ -32,8 +32,9 @@ namespace Facultad.Libreria.Entidades
             this._fechaNac = fechaNac;
 
         }
-        public Alumno()
-        { }
+        public Alumno(int codigo)
+        { this._codigo = codigo; }
+        public Alumno() { }
         // Metodos
        public override string GetCredencial()
         {//ALTERNATIVA

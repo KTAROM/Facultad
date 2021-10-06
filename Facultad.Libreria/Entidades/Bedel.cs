@@ -32,6 +32,8 @@ namespace Facultad.Libreria.Entidades
         }
         public Bedel(string apellido, DateTime fechaNac, string nombre, DateTime fechaingreso, int legajo, string apodo) :
             base(apellido, fechaNac, nombre, fechaingreso, legajo)
-        { }
+        {
+            this._apodo = apodo;
+        }
     }
 }

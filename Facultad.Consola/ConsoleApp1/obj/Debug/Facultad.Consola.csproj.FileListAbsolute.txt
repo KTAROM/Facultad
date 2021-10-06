@@ -10,3 +10,5 @@ C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\ConsoleApp1\obj\Debug\
 C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\ConsoleApp1\obj\Debug\Facultad.Consola.csproj.CopyComplete
 C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\ConsoleApp1\bin\Debug\Facultad.ExceptionAlumnoNoEsta.dll
+C:\Users\kta_r\Documents\GitHub\Facultad\Facultad.Consola\ConsoleApp1\bin\Debug\Facultad.ExceptionAlumnoNoEsta.pdb
